@@ -1,0 +1,179 @@
+// Variables
+$off-white: #fafafa;
+$dark-grey: #313131;
+$navy: #244A82;
+$sage: #168A79;
+$rose: #F03A47;
+$rust: #FE994A;
+$plum: #795F80;
+
+$text-color-primary: $off-white;
+$icon-accent: $off-white;
+
+$border-radius: 1.6rem;
+$border-radius-2: calc($border-radius / 2);
+
+// Fonts
+
+@font-face {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    src: url(../fonts/PlusJakartaSans-VariableFont_wght.ttf);
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    src: url(../fonts/PlusJakartaSans-Italic-VariableFont_wght.ttf);
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Sporting Grotesque', sans-serif;
+    src: url(../fonts/SportingGrotesque-Regular.otf);
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Sporting Grotesque', sans-serif;
+    src: url(../fonts/SportingGrotesque-Bold.otf);
+    font-style: normal;
+}
+
+// Mixins
+
+@mixin smart-flex($direction, $justify, $align) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+// Global Styles
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans';
+}
+
+html {
+    font-size: 62.5%;
+}
+
+section {
+    height: 80vh;
+    height: 80dvh;
+    min-height: 556px;
+}
+
+h1 {
+    font-size: clamp(8rem, 14vw, 12rem);
+    color: $off-white;
+    font-family: 'Sporting Grotesque';
+    color: $text-color-primary;
+    text-align: center;
+    line-height: 100%;
+}
+
+h2 {
+    font-size: clamp(4rem, 10vw, 8rem);
+    color: $off-white;
+    font-family: 'Sporting Grotesque';
+    color: $text-color-primary;
+    line-height: 100%;
+}
+
+h3 {
+    font-size: clamp(3.2rem, 8vw, 6rem);
+    color: $off-white;
+    font-family: 'Sporting Grotesque';
+    color: $text-color-primary;
+    line-height: 100%;
+}
+
+p {
+    font-size: 2.4rem;
+    font-weight: 300;
+    color: $text-color-primary;
+}
+
+body {
+    background-color: #313131;
+}
+
+.hero {
+    @include smart-flex(column, center, center);
+    gap: 24px;
+}
+
+.notice-me {
+    font-style: italic;
+    font-weight: 500;
+    color: $sage;
+}
+
+// Refactored with scss loop
+
+// .sage-bg {
+//     background-color: $sage;
+//     color: $sage;
+
+//     &:hover {
+//         background-color: rgba($sage, 0.6);
+//     }
+// }
+// .navy-bg {
+//     background-color: $navy;
+//     color: $navy;
+
+//     &:hover {
+//         background-color: rgba($navy, 0.6);
+//     }
+// }
+// .rose-bg {
+//     background-color: $rose;
+//     color: $rose;
+
+//     &:hover {
+//         background-color: rgba($rose, 0.6);
+//     }
+// }
+
+$color-list: sage $sage, navy $navy, rose $rose, plum $plum, rust $rust;
+
+@each $name, $color in $color-list {
+    .#{$name}-bg {
+        background-color: $color;
+        color: $color;
+
+        &:hover {
+            background-color: rgba($color, 0.7);
+        }
+    }
+}
+
+
+// Media Queries
+
+@media (max-width: 1440px) {
+    html {
+        font-size: 52%;
+    }
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: 40%;
+    }
+
+    .hero {
+        align-items: flex-start;
+        padding: 24px;
+
+        h1 {
+            text-align: left;
+        }
+    }
+}
+
+@import './marquee-styles';

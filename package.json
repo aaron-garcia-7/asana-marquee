@@ -1,0 +1,7 @@
+{
+    "name": "marquee",
+    "version": "1.0.0",
+    "scripts": {
+        "watch": "sass --watch styles/index.scss:styles/styles.css"
+    }
+}

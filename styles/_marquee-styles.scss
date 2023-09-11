@@ -1,18 +1,34 @@
-$marquee-item-width: 280px;
-$marquee-gap: 24px;
+$marquee-item-width: 264px;
+$marquee-gap: 32px;
 
 $width-and-gap: calc($marquee-item-width + $marquee-gap);
-$number-of-marquee-items: 10; // Change this number based on the length of the marqueeItemsData Array in the JavaScript. Lastly, multiply the number by 2.
+$number-of-marquee-items: 20; // Change this number based on the length of the marqueeItemsData Array in the JavaScript; then multiply the number by 2.
 
-$marquee-timing: 40s;
+$marquee-duration: 120s; // animation-duration css propertys
 
 .marquee-container {
     padding: $marquee-gap;
     overflow: hidden;
     position: relative;
+    
+    .marquee-container-draggable {    
+        overflow: hidden;  // This becomes the viewport for the marquee
+        cursor: grab;
+        transform-origin: left;
+        transition: 0.4s ease;
+
+        &:active {
+            transform: scale(1.025);
+            cursor: grabbing;
+            
+            .marquee-item {
+                cursor: grabbing;
+            }
+        }
+    }
 
     .marquee-container-row {
-        animation: marquee-animation $marquee-timing linear infinite;
+        animation: marquee-animation $marquee-duration linear infinite;
         width: calc($width-and-gap * $number-of-marquee-items);
     }
 
@@ -59,8 +75,8 @@ $marquee-timing: 40s;
         font-size: 36px;
         font-weight: 500;
         background-color: $off-white;
-        width: 48px;
-        height: 48px;
+        width: 52px;
+        height: 52px;
         border-radius: $border-radius-2;
         @include smart-flex(row, center, center);
 
@@ -151,7 +167,7 @@ $marquee-timing: 40s;
     .marquee-container {
     
         .marquee-container-row {
-            animation: marquee-animation calc($marquee-timing / 1.8) linear infinite;
+            animation-duration: calc($marquee-duration / 1.5);
         }
     }
 }

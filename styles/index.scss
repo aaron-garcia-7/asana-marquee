@@ -139,7 +139,7 @@ body {
 //     }
 // }
 
-$color-list: sage $sage, navy $navy, rose $rose, plum $plum, rust $rust;
+$color-list: 'sage' $sage, 'navy' $navy, 'rose' $rose, 'plum' $plum, 'rust' $rust;
 
 @each $name, $color in $color-list {
     .#{$name}-bg {

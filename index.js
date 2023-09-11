@@ -26,7 +26,7 @@ const marqueeItemsData = [
     // title: "4",
     subtitle: "Plum Sweet",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis eaque adipisci, fugiat itaque accusamus commodi?",
+      "Lorem ipsum dolor sit amet, adipisicing elit. Perferendis eaque adipisci, fugiat itaque accusamus commodi?",
     theme: "plum",
     imageSrc: "./images/sample-4.jpg",
   },
@@ -69,7 +69,60 @@ const appendItemsToMarquee = (marqueeContent) => {
   });
 };
 
-appendItemsToMarquee(marqueeItemsData);
-appendItemsToMarquee(marqueeItemsData);
-appendItemsToMarquee(marqueeItemsData);
-appendItemsToMarquee(marqueeItemsData);
+const timesToAppend = 8; // Push this many groups of marque content into the slider.
+
+for (let i = 0; i < timesToAppend; i++) {
+  appendItemsToMarquee(marqueeItemsData);
+}
+
+//
+// Drag Functionality
+//
+
+let isDragging = false;
+let startX, currentX;
+let scrollLeft;
+
+const marquee = document.querySelector(".marquee-container-draggable");
+
+marquee.addEventListener("mousedown", (e) => {
+  isDragging = true;
+  marquee.style.cursor = "grabbing";
+  startX = e.pageX - marquee.offsetLeft;
+  scrollLeft = marquee.scrollLeft;
+});
+
+document.addEventListener("mouseup", () => {
+  isDragging = false;
+  marquee.style.cursor = "grab";
+});
+
+document.addEventListener("mousemove", (e) => {
+  if (!isDragging) return;
+  e.preventDefault();
+
+  currentX = e.pageX - marquee.offsetLeft;
+  const walk = currentX - startX;
+  marquee.scrollLeft = scrollLeft - walk;
+});
+
+//
+// Media Queries in JavsScript
+//
+
+let mediaQuery = window.matchMedia("(max-width: 768px)");
+
+if (mediaQuery.matches) {
+  console.log("Narrow viewport");
+} else {
+  console.log("Wide viewport");
+}
+
+// You can also add an event listener to handle changes in the viewport size
+mediaQuery.addEventListener("change", (event) => {
+  if (event.matches) {
+    console.log("Changed to narrow viewport");
+  } else {
+    console.log("Changed to wide viewport");
+  }
+});

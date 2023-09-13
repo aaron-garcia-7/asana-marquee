@@ -4,7 +4,7 @@ $marquee-gap: 32px;
 $width-and-gap: calc($marquee-item-width + $marquee-gap);
 $number-of-marquee-items: 20; // Change this number based on the length of the marqueeItemsData Array in the JavaScript; then multiply the number by 2.
 
-$marquee-duration: 120s; // animation-duration css propertys
+$marquee-duration: 90s; // animation-duration css propertys
 
 .marquee-container {
     padding: $marquee-gap;
@@ -14,7 +14,7 @@ $marquee-duration: 120s; // animation-duration css propertys
     .marquee-container-draggable {    
         overflow: hidden;  // This becomes the viewport for the marquee
         cursor: grab;
-        transform-origin: left;
+        transform-origin: center;
         transition: 0.4s ease;
 
         &:active {

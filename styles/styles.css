@@ -149,7 +149,7 @@ body {
 .marquee-container .marquee-container-draggable {
   overflow: hidden;
   cursor: grab;
-  transform-origin: left;
+  transform-origin: center;
   transition: 0.4s ease;
 }
 .marquee-container .marquee-container-draggable:active {
@@ -160,7 +160,7 @@ body {
   cursor: grabbing;
 }
 .marquee-container .marquee-container-row {
-  animation: marquee-animation 120s linear infinite;
+  animation: marquee-animation 90s linear infinite;
   width: 5920px;
 }
 .marquee-container .marquee-set {
@@ -276,7 +276,7 @@ body {
 }
 @media (max-width: 768px) {
   .marquee-container .marquee-container-row {
-    animation-duration: 80s;
+    animation-duration: 60s;
   }
 }
 
